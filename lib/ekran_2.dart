@@ -2,19 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:app/SettingsApp.dart';
 import 'package:app/home.dart';
 
-void main() {
-  runApp(Ekran2());
-}
+
 
 class Ekran2 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Katalog App',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: Scaffold(
+    return Scaffold(
         appBar: AppBar(
           title: Text('KATALOG'),
           actions: [
@@ -116,7 +109,6 @@ class Ekran2 extends StatelessWidget {
             ],
           ),
         ),
-      ),
     );
   }
 }
