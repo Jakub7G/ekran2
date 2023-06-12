@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:app/ekran_2.dart';
 import 'package:app/home.dart';
 
-void main() => runApp(SettingsApp());
 
 class SettingsApp extends StatefulWidget {
   @override
@@ -10,12 +9,10 @@ class SettingsApp extends StatefulWidget {
 }
 
 class _SettingsAppState extends State<SettingsApp> {
-  bool _isDarkModeEnabled = false;
   String _selectedLanguage = 'Polski';
 
   void toggleDarkMode(bool value) {
     setState(() {
-      _isDarkModeEnabled = value;
     });
   }
 
@@ -27,14 +24,10 @@ class _SettingsAppState extends State<SettingsApp> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Settings App',
-      theme: _isDarkModeEnabled ? ThemeData.dark() : ThemeData.light(),
-      home: SettingsPage(
+    return SettingsPage(
         toggleDarkMode: toggleDarkMode,
         selectedLanguage: _selectedLanguage,
         changeLanguage: changeLanguage,
-      ),
     );
   }
 }
