@@ -11,7 +11,7 @@ class Ekran1 extends StatelessWidget {
         centerTitle: true,
         title: const Text(
           'SUPER PRZEPISY',
-          style: TextStyle(fontSize: 35),
+          style: TextStyle(fontSize: 22),
         ),
         actions: [
           // Add your action widgets here

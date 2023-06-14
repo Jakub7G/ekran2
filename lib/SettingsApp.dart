@@ -11,6 +11,7 @@ class SettingsApp extends StatelessWidget {
       builder: (context, themeNotifier, child) {
         return Scaffold(
           appBar: AppBar(
+            centerTitle: true,
             title: Text('MOTYW'),
           ),
           body: Center(
