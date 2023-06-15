@@ -2,113 +2,120 @@ import 'package:flutter/material.dart';
 import 'package:app/SettingsApp.dart';
 import 'package:app/home.dart';
 
-
-
 class Ekran2 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text('KATALOG'),
-          actions: [
-            IconButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => RecipeScreen()),
-                );
-              },
-              icon: Icon(Icons.article),
-            ),
-          ],
-        ),
-        body: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                SizedBox(height: 0.5),
-                Center(
-                  child: Text(
-                    '',
-                    style: TextStyle(
-                      fontSize: 2,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-                SizedBox(height: 10),
-                Image.asset('images/obraz.png'),
-                SizedBox(height: 16),
-                Center(
-                  child: Text(
-                    'Sałatka z awokado i mozarellą',
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-                SizedBox(height: 16),
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 76),
-                  child: Container(
-                    width: double.infinity,
-                    padding: EdgeInsets.all(20),
-                    color: Colors.lightBlue[100],
-                    child: Text(
-                      'Porcja 269g = 394 kcal',
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 16,
-                      ),
-                      textAlign: TextAlign.center,
-                    ),
-                  ),
-                ),
-                SizedBox(height: 16),
-                CatalogTable(),
-              ],
-            ),
+      appBar: AppBar(
+        centerTitle: true,
+        title: Text('KATALOG'),
+        automaticallyImplyLeading: false, // Dodana właściwość
+        actions: [
+          IconButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => RecipeScreen()),
+              );
+            },
+            icon: Icon(Icons.article),
           ),
-        ),
-        bottomNavigationBar: Container(
-          color: Colors.grey[200],
-          padding: EdgeInsets.all(16),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        ],
+      ),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => Ekran1()),
-                  );
-                },
-                child: Text('1'),
+              SizedBox(height: 0.5),
+              Center(
+                child: Text(
+                  '',
+                  style: TextStyle(
+                    fontSize: 2,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
               ),
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => Ekran2()),
-                  );
-                },
-                child: Text('2'),
+              SizedBox(height: 10),
+              Image.asset('images/obraz.png'),
+              SizedBox(height: 16),
+              Center(
+                child: Text(
+                  'Sałatka z awokado i mozarellą',
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
               ),
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => SettingsApp()),
-                  );
-                },
-                child: Text('3'),
+              SizedBox(height: 16),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 76),
+                child: Container(
+                  width: double.infinity,
+                  padding: EdgeInsets.all(20),
+                  color: Colors.lightBlue[100],
+                  child: Text(
+                    'Porcja 269g = 394 kcal',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 16,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                ),
               ),
+              SizedBox(height: 16),
+              CatalogTable(),
             ],
           ),
         ),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: '',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.receipt),
+            label: '',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.settings),
+            label: '',
+          ),
+        ],
+        currentIndex: 1,
+        onTap: (index) {
+          switch (index) {
+            case 0:
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => Ekran1()),
+              );
+              break;
+            case 1:
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => Ekran2()),
+              );
+              break;
+            case 2:
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => SettingsApp()),
+              );
+              break;
+          }
+        },
+        backgroundColor: Colors.blue,
+        selectedItemColor: Colors.white,
+        unselectedItemColor: Colors.grey,
+        iconSize: 34,
+      ),
     );
   }
 }
@@ -173,6 +180,7 @@ class RecipeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         title: Text('SUPER PRZEPISY'),
       ),
       body: SingleChildScrollView(

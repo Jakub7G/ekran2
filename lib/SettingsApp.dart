@@ -7,60 +7,67 @@ import 'model_theme.dart';
 class SettingsApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Consumer<ModelTheme>(
-      builder: (context, themeNotifier, child) {
-        return Scaffold(
-          appBar: AppBar(
-            title: Text('MOTYW'),
-          ),
-          body: Center(
-            child: IconButton(
-              icon: Icon(
-                themeNotifier.isDark ? Icons.nightlight_round : Icons.wb_sunny,
-              ),
-              onPressed: () {
-                themeNotifier.isDark = !themeNotifier.isDark;
-              },
+    return Consumer<ModelTheme>(builder: (context, themeNotifier, child) {
+      return Scaffold(
+        appBar: AppBar(
+          centerTitle: true,
+          title: Text('MOTYW'),
+          automaticallyImplyLeading: false, // Dodana właściwość
+        ),
+        body: Center(
+          child: IconButton(
+            icon: Icon(
+              themeNotifier.isDark ? Icons.nightlight_round : Icons.wb_sunny,
             ),
+            onPressed: () {
+              themeNotifier.isDark = !themeNotifier.isDark;
+            },
           ),
-          bottomNavigationBar: Container(
-            color: Colors.grey[200],
-            padding: EdgeInsets.all(16),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                ElevatedButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => Ekran1()),
-                    );
-                  },
-                  child: Text('1'),
-                ),
-                ElevatedButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => Ekran2()),
-                    );
-                  },
-                  child: Text('2'),
-                ),
-                ElevatedButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => SettingsApp()),
-                    );
-                  },
-                  child: Text('3'),
-                ),
-              ],
+        ),
+        bottomNavigationBar: BottomNavigationBar(
+          items: const <BottomNavigationBarItem>[
+            BottomNavigationBarItem(
+              icon: Icon(Icons.home),
+              label: '',
             ),
-          ),
-        );
-      },
-    );
+            BottomNavigationBarItem(
+              icon: Icon(Icons.receipt),
+              label: '',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.settings),
+              label: '',
+            ),
+          ],
+          currentIndex: 2,
+          onTap: (index) {
+            switch (index) {
+              case 0:
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => Ekran1()),
+                );
+                break;
+              case 1:
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => Ekran2()),
+                );
+                break;
+              case 2:
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => SettingsApp()),
+                );
+                break;
+            }
+          },
+          backgroundColor: Colors.blue,
+          selectedItemColor: Colors.white,
+          unselectedItemColor: Colors.grey,
+          iconSize: 34,
+        ),
+      );
+    });
   }
 }

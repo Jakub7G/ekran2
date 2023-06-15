@@ -2,8 +2,46 @@ import 'package:flutter/material.dart';
 import 'ekran_2.dart';
 import 'SettingsApp.dart';
 
+class Ekran1 extends StatefulWidget {
+  @override
+  _Ekran1State createState() => _Ekran1State();
+}
 
-class Ekran1 extends StatelessWidget {
+class _Ekran1State extends State<Ekran1> with SingleTickerProviderStateMixin {
+  int _currentIndex = 0;
+  bool _isHovered = false;
+  late AnimationController _animationController;
+  late Animation<double> _scaleAnimation;
+
+  @override
+  void initState() {
+    super.initState();
+    _animationController = AnimationController(
+      vsync: this,
+      duration: Duration(milliseconds: 200),
+    );
+    _scaleAnimation = Tween<double>(begin: 1.0, end: 2.0).animate(
+      CurvedAnimation(
+        parent: _animationController,
+        curve: Curves.easeInOut,
+      ),
+    );
+  }
+
+  @override
+  void dispose() {
+    _animationController.dispose();
+    super.dispose();
+  }
+
+  void _startHoverAnimation() {
+    _animationController.forward();
+  }
+
+  void _endHoverAnimation() {
+    _animationController.reverse();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -11,10 +49,10 @@ class Ekran1 extends StatelessWidget {
         centerTitle: true,
         title: const Text(
           'SUPER PRZEPISY',
-          style: TextStyle(fontSize: 35),
+          style: TextStyle(fontSize: 25),
         ),
         actions: [
-          // Add your action widgets here
+          // Dodaj swoje widżety akcji tutaj
         ],
       ),
       body: Column(
@@ -31,50 +69,57 @@ class Ekran1 extends StatelessWidget {
             style: TextStyle(fontSize: 30, backgroundColor: Colors.lightBlue),
           ),
           const SizedBox(
-            height: 6,
+            height: 39,
           ),
           const Align(
             child: Image(
               image: AssetImage('images/fotofood.png'),
             ),
           ),
-          Spacer(),
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                ElevatedButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => Ekran1()),
-                    );
-                  },
-                  child: Text('1'),
-                ),
-                ElevatedButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => Ekran2()),
-                    );
-                  },
-                  child: Text('2'),
-                ),
-                ElevatedButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => SettingsApp()),
-                    );
-                  },
-                  child: Text('3'),
-                ),
-              ],
-            ),
+        ],
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: '',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.receipt),
+            label: '',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.settings),
+            label: '',
           ),
         ],
+        currentIndex: 0,
+        onTap: (index) {
+          switch (index) {
+            case 0:
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => Ekran1()),
+              );
+              break;
+            case 1:
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => Ekran2()),
+              );
+              break;
+            case 2:
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => SettingsApp()),
+              );
+              break;
+          }
+        },
+        backgroundColor: Colors.blue,
+        selectedItemColor: Colors.white,
+        unselectedItemColor: Colors.grey,
+        iconSize: 34,
       ),
     );
   }

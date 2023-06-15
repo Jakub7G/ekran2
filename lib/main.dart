@@ -21,10 +21,10 @@ class MyApp extends StatelessWidget {
             theme: themeNotifier.isDark
                 ? ThemeData(brightness: Brightness.dark)
                 : ThemeData(
-              brightness: Brightness.light,
-              primaryColor: Colors.greenAccent,
-              primarySwatch: Colors.blue,
-            ),
+                    brightness: Brightness.light,
+                    primaryColor: Colors.greenAccent,
+                    primarySwatch: Colors.blue,
+                  ),
             debugShowCheckedModeBanner: false,
             home: Ekran1(),
             routes: {
