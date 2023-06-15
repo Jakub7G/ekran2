@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'ekran_2.dart';
 import 'SettingsApp.dart';
 import 'package:provider/provider.dart';
 import 'model_theme.dart';
+import 'katalog.dart';
 
 class Ekran1 extends StatelessWidget {
   @override
@@ -10,6 +10,7 @@ class Ekran1 extends StatelessWidget {
     return Consumer<ModelTheme>(builder: (context, themeNotifier, child) {
       return Scaffold(
         appBar: AppBar(
+          backgroundColor: themeNotifier.isDark ? Colors.black : Colors.orange[100],
           title: Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
@@ -34,135 +35,106 @@ class Ekran1 extends StatelessWidget {
             ),
           ),
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               SizedBox(height: 10),
-              Container(
-                width: 100,
-                height: 100,
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                    image: AssetImage('assets/obraz.png'),
-                    fit: BoxFit.cover,
+              InkWell(
+                onTap: () {
+                  Navigator.pushNamed(context, '/ekran2');
+                },
+                child: Container(
+                  width: 150,
+                  height: 150,
+                  margin: EdgeInsets.all(10),
+                  decoration: BoxDecoration(
+                    color: Colors.pinkAccent,
+                    borderRadius: BorderRadius.circular(10),
                   ),
-                  shape: BoxShape.circle,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        'Sałatka z Mozzarellą',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 14,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      SizedBox(height: 10),
+                      Image.asset(
+                        'images/obraz.png',
+                        fit: BoxFit.cover,
+                      ),
+                    ],
+                  ),
                 ),
               ),
-              SizedBox(height: 50),
-              Center(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        InkWell(
-                          onTap: () {
-                            Navigator.pushNamed(context, '/ekran2');
-                          },
-                          child: Container(
-                            width: 150,
-                            height: 150,
-                            margin: EdgeInsets.all(10),
-                            decoration: BoxDecoration(
-                              color: Colors.blue,
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Text(
-                                  'Sałatka z Mozzarellą',
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                                SizedBox(height: 10),
-                                Image.asset(
-                                  'images/obraz.png',
-                                  fit: BoxFit.cover,
-                                ),
-                              ],
-                            ),
-                          ),
+              InkWell(
+                onTap: () {
+                  Navigator.pushNamed(context, '/ekran4');
+                },
+                child: Container(
+                  width: 150,
+                  height: 150,
+                  margin: EdgeInsets.all(10),
+                  decoration: BoxDecoration(
+                    color: Colors.orangeAccent,
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        'Spaghetti',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 14,
+                          fontWeight: FontWeight.bold,
                         ),
-                        InkWell(
-                          onTap: () {
-                            Navigator.pushNamed(context, '/ekran4');
-                          },
-                          child: Container(
-                            width: 150,
-                            height: 150,
-                            margin: EdgeInsets.all(10),
-                            decoration: BoxDecoration(
-                              color: Colors.blue,
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Text(
-                                  'Spaghetti',
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                                SizedBox(height: 10),
-                                Image.asset(
-                                  'images/spaghetti.png',
-                                  fit: BoxFit.cover,
-                                ),
-                              ],
-                            ),
-                          ),
+                      ),
+                      SizedBox(height: 10),
+                      Image.asset(
+                        'images/spaghetti.png',
+                        fit: BoxFit.cover,
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              InkWell(
+                onTap: () {
+                  Navigator.pushNamed(context, '/ekran3');
+                },
+                child: Container(
+                  width: 150,
+                  height: 150,
+                  margin: EdgeInsets.all(10),
+                  decoration: BoxDecoration(
+                    color: Colors.lightBlueAccent,
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        'Klopsiki',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 14,
+                          fontWeight: FontWeight.bold,
                         ),
-                      ],
-                    ),
-                    SizedBox(height: 30),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        InkWell(
-                          onTap: () {
-                            Navigator.pushNamed(context, '/ekran3');
-                          },
-                          child: Container(
-                            width: 150,
-                            height: 150,
-                            margin: EdgeInsets.all(10),
-                            decoration: BoxDecoration(
-                              color: Colors.blue,
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Text(
-                                  'Klopsiki',
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                                SizedBox(height: 10),
-                                Transform.scale(
-                                  scale: 1.0, // Adjust the scale as needed
-                                  child: Image.asset(
-                                    'images/klopsy.png',
-                                    fit: BoxFit.cover,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
+                      ),
+                      SizedBox(height: 10),
+                      Transform.scale(
+                        scale: 1.0, // Adjust the scale as needed
+                        child: Image.asset(
+                          'images/klopsy.png',
+                          fit: BoxFit.cover,
                         ),
-                      ],
-                    ),
-                  ],
+                      ),
+                    ],
+                  ),
                 ),
               ),
               SizedBox(height: 50), // Add this SizedBox for spacing
@@ -203,7 +175,7 @@ class Ekran1 extends StatelessWidget {
               case 1:
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => Ekran2()),
+                  MaterialPageRoute(builder: (context) => Katalog()),
                 );
                 break;
               case 2:
@@ -214,7 +186,7 @@ class Ekran1 extends StatelessWidget {
                 break;
             }
           },
-          backgroundColor: themeNotifier.isDark ? Colors.black : Colors.blue,
+          backgroundColor: themeNotifier.isDark ? Colors.black : Colors.orange[100],
           selectedItemColor: Colors.white,
           unselectedItemColor: Colors.grey,
           iconSize: 34,

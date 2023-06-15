@@ -1,22 +1,32 @@
+import 'package:app/katalog.dart';
 import 'package:flutter/material.dart';
 import 'package:app/SettingsApp.dart';
 import 'package:app/home.dart';
 import 'package:provider/provider.dart';
 import 'model_theme.dart';
 
-class Ekran3 extends StatelessWidget {
+
+class Ekran5 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Consumer<ModelTheme>(builder: (context, themeNotifier, child) {
       return Scaffold(
         appBar: AppBar(
-
           centerTitle: true,
-          title: Text('KATALOG PRZEPISÓW'),
+          title: Text('KATALOG'),
           automaticallyImplyLeading: false, // Dodana właściwość
-          backgroundColor: themeNotifier.isDark
-              ? Colors.black
-              : Colors.orange[100], // Ustawienie koloru tła paska nawigacji
+          actions: [
+            IconButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => RecipeScreen()),
+                );
+              },
+              icon: Icon(Icons.article),
+            ),
+          ],
+          backgroundColor: themeNotifier.isDark ? Colors.black : Colors.orange[100], // Ustawienie koloru tła paska nawigacji
         ),
         body: SingleChildScrollView(
           child: Padding(
@@ -34,12 +44,12 @@ class Ekran3 extends StatelessWidget {
                     ),
                   ),
                 ),
-                SizedBox(height: 1),
-                Image.asset('images/klopsy.png'),
+                SizedBox(height: 10),
+                Image.asset('images/warzywa.png'),
                 SizedBox(height: 16),
                 Center(
                   child: Text(
-                    'Klopsy w sosie pomidorowym',
+                    'Warzywa na patelne',
                     style: TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
@@ -54,7 +64,7 @@ class Ekran3 extends StatelessWidget {
                     padding: EdgeInsets.all(20),
                     color: Colors.lightBlue[100],
                     child: Text(
-                      'Porcja 200g = 350 kcal',
+                      'Porcja 300g = 590 kcal',
                       style: TextStyle(
                         color: Colors.black,
                         fontSize: 16,
@@ -65,22 +75,6 @@ class Ekran3 extends StatelessWidget {
                 ),
                 SizedBox(height: 16),
                 CatalogTable(),
-                SizedBox(height: 16),
-                Align(
-                  alignment: Alignment.center,
-                  child: ElevatedButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => RecipeScreen()),
-                      );
-                    },
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.lightBlue, // Ustawienie koloru przycisku
-                    ),
-                    child: Text('Zobacz przepis'),
-                  ),
-                ),
               ],
             ),
           ),
@@ -112,7 +106,7 @@ class Ekran3 extends StatelessWidget {
               case 1:
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => Ekran3()),
+                  MaterialPageRoute(builder: (context) => Katalog()),
                 );
                 break;
               case 2:
@@ -132,7 +126,6 @@ class Ekran3 extends StatelessWidget {
     });
   }
 }
-
 class CatalogTable extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -148,25 +141,19 @@ class CatalogTable extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          _buildTableRow('Mięso mielone', '500g'),
-          _buildTableRow('Bułka tarta', '1/2 szklanki'),
-          _buildTableRow('Cebula', '1 sztuka'),
-          _buildTableRow('Jajko', '1 sztuka'),
-          _buildTableRow('Mleko', '1/4 szklanki'),
-          _buildTableRow('Czosnek', '2 ząbki'),
-          _buildTableRow('Sól', '1 łyżeczka'),
-          _buildTableRow('Pieprz', '1/2 łyżeczki'),
-          _buildTableRow('Mąka', '2 łyżki'),
-          _buildTableRow('Przyprawa do mięsa', '1 łyżeczka'),
-          _buildTableRow('Przecier pomidorowy', '500g'),
-          _buildTableRow('Cukier', '1 łyżeczka'),
-          _buildTableRow('Woda', '1 szklanka'),
+          _buildTableRow('Marchew', '2x sztuka (200g)'),
+          _buildTableRow('Brokuł', '1x (150g)'),
+          _buildTableRow('Ziemniaki', '3x sztuka (300g)'),
+          _buildTableRow('Olej słonecznikowy', '4x łyżka (100g)'),
+          _buildTableRow('Papryka', '2x sztuka (120g)'),
+          _buildTableRow('Fasola szparagowa', '0,5x opakowania (150g)'),
+          _buildTableRow('Cebula', '1,5x sztuka (150g)'),
+          _buildTableRow('Kukurydza', '1x sztuka (130g)'),
         ],
       ),
     );
   }
-
-  Widget _buildTableRow(String name, String quantity) {
+  Widget _buildTableRow(String name, String description) {
     return Container(
       margin: EdgeInsets.only(bottom: 8),
       child: Row(
@@ -181,7 +168,7 @@ class CatalogTable extends StatelessWidget {
             ),
           ),
           Text(
-            quantity,
+            description,
             style: TextStyle(
               color: Colors.black,
               fontSize: 16,
@@ -192,7 +179,6 @@ class CatalogTable extends StatelessWidget {
     );
   }
 }
-
 class RecipeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -208,7 +194,7 @@ class RecipeScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'Oto przepis na klopsiki:',
+                'Oto przepis na sałatkę z awokado i mozarellą:',
                 style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
@@ -221,7 +207,7 @@ class RecipeScreen extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 16),
                   child: Text(
-                    '1. W misce wymieszaj mięso mielone, bułkę tartą, posiekaną cebulę, jajko, mleko, przeciśnięty czosnek, sól i pieprz.',
+                    '1. Pokrój pomidora, awokado i ser mozzarella na plastry.',
                     style: TextStyle(fontSize: 16),
                     textAlign: TextAlign.left,
                   ),
@@ -233,7 +219,7 @@ class RecipeScreen extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 16),
                   child: Text(
-                    '2. Uformuj z masy mięsnej małe klopsy.',
+                    '2. Na talerzu ułóż rukolę i układaj na niej plasterki pomidora, awokado i mozzarelli.',
                     style: TextStyle(fontSize: 16),
                     textAlign: TextAlign.left,
                   ),
@@ -245,7 +231,7 @@ class RecipeScreen extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 16),
                   child: Text(
-                    '3. Na rozgrzanej patelni obsmaż klopsy z każdej strony.',
+                    '3. Skrop wszystko oliwą z oliwek.',
                     style: TextStyle(fontSize: 16),
                     textAlign: TextAlign.left,
                   ),
@@ -257,19 +243,7 @@ class RecipeScreen extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 16),
                   child: Text(
-                    '4. W osobnym garnku podgrzej przecier pomidorowy z cukrem i wodą.',
-                    style: TextStyle(fontSize: 16),
-                    textAlign: TextAlign.left,
-                  ),
-                ),
-              ),
-              SizedBox(height: 8),
-              Align(
-                alignment: Alignment.centerLeft,
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16),
-                  child: Text(
-                    '5. Dodaj przyprawę do mięsa do sosu i gotuj przez kilka minut.',
+                    '4. Dopraw solą, pieprzem i oregano.',
                     style: TextStyle(fontSize: 16),
                     textAlign: TextAlign.left,
                   ),
@@ -277,7 +251,7 @@ class RecipeScreen extends StatelessWidget {
               ),
               SizedBox(height: 16),
               Center(
-                child: Image.asset('images/klopsy2.png'),
+                child: Image.asset('images/salatka.png'),
               ),
               SizedBox(height: 16),
               Align(

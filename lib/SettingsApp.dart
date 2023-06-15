@@ -1,3 +1,4 @@
+import 'package:app/katalog.dart';
 import 'package:flutter/material.dart';
 import 'home.dart';
 import 'ekran_2.dart';
@@ -13,7 +14,7 @@ class SettingsApp extends StatelessWidget {
           centerTitle: true,
           title: Text('MOTYW'),
           automaticallyImplyLeading: false, // Dodana właściwość
-          backgroundColor: themeNotifier.isDark ? Colors.black : Colors.blue, // Ustawienie koloru tła paska nawigacji
+          backgroundColor: themeNotifier.isDark ? Colors.black : Colors.orange[100], // Ustawienie koloru tła paska nawigacji
         ),
         body: Center(
           child: IconButton(
@@ -52,7 +53,7 @@ class SettingsApp extends StatelessWidget {
               case 1:
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => Ekran2()),
+                  MaterialPageRoute(builder: (context) => Katalog()),
                 );
                 break;
               case 2:
@@ -63,7 +64,7 @@ class SettingsApp extends StatelessWidget {
                 break;
             }
           },
-          backgroundColor: themeNotifier.isDark ? Colors.black : Colors.blue, // Ustawienie koloru tła paska nawigacji
+          backgroundColor: themeNotifier.isDark ? Colors.black : Colors.orange[100],
           selectedItemColor: Colors.white,
           unselectedItemColor: Colors.grey,
           iconSize: 34,

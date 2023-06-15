@@ -15,7 +15,7 @@ class Ekran4 extends StatelessWidget {
           automaticallyImplyLeading: false, // Dodana właściwość
           backgroundColor: themeNotifier.isDark
               ? Colors.black
-              : Colors.blue, // Ustawienie koloru tła paska nawigacji
+              : Colors.orange[100], // Ustawienie koloru tła paska nawigacji
         ),
         body: SingleChildScrollView(
           child: Padding(
@@ -122,9 +122,7 @@ class Ekran4 extends StatelessWidget {
                 break;
             }
           },
-          backgroundColor: themeNotifier.isDark
-              ? Colors.black
-              : Colors.blue, // Ustawienie koloru tła paska nawigacji
+          backgroundColor: themeNotifier.isDark ? Colors.black : Colors.orange[100],
           selectedItemColor: Colors.white,
           unselectedItemColor: Colors.grey,
           iconSize: 34,

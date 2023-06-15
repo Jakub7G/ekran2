@@ -64,12 +64,16 @@ flutter:
   assets:
     - images/obraz.png
     - images/salatka.png
-    - images/fotofood.png
     - images/logo.png
     - images/klopsy.png
     - images/klopsy2.png
     - images/spaghetti.png
     - images/spaghetti2.png
+    - images/hamburger.png
+    - images/hamburger2.png
+    - images/warzywa.png
+    - images/warzywa2.png
+
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 
