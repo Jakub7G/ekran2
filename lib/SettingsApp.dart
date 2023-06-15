@@ -13,6 +13,7 @@ class SettingsApp extends StatelessWidget {
           centerTitle: true,
           title: Text('MOTYW'),
           automaticallyImplyLeading: false, // Dodana właściwość
+          backgroundColor: themeNotifier.isDark ? Colors.black : Colors.blue, // Ustawienie koloru tła paska nawigacji
         ),
         body: Center(
           child: IconButton(
@@ -62,7 +63,7 @@ class SettingsApp extends StatelessWidget {
                 break;
             }
           },
-          backgroundColor: Colors.blue,
+          backgroundColor: themeNotifier.isDark ? Colors.black : Colors.blue, // Ustawienie koloru tła paska nawigacji
           selectedItemColor: Colors.white,
           unselectedItemColor: Colors.grey,
           iconSize: 34,
