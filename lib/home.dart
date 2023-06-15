@@ -1,89 +1,180 @@
 import 'package:flutter/material.dart';
 import 'ekran_2.dart';
 import 'SettingsApp.dart';
-import 'model_theme.dart';
 import 'package:provider/provider.dart';
+import 'model_theme.dart';
 
-class Ekran1 extends StatefulWidget {
-  @override
-  _Ekran1State createState() => _Ekran1State();
-}
-
-class _Ekran1State extends State<Ekran1> with SingleTickerProviderStateMixin {
-  int _currentIndex = 0;
-  bool _isHovered = false;
-  late AnimationController _animationController;
-  late Animation<double> _scaleAnimation;
-
-  @override
-  void initState() {
-    super.initState();
-    _animationController = AnimationController(
-      vsync: this,
-      duration: Duration(milliseconds: 200),
-    );
-    _scaleAnimation = Tween<double>(begin: 1.0, end: 2.0).animate(
-      CurvedAnimation(
-        parent: _animationController,
-        curve: Curves.easeInOut,
-      ),
-    );
-  }
-
-  @override
-  void dispose() {
-    _animationController.dispose();
-    super.dispose();
-  }
-
-  void _startHoverAnimation() {
-    _animationController.forward();
-  }
-
-  void _endHoverAnimation() {
-    _animationController.reverse();
-  }
-
+class Ekran1 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Consumer<ModelTheme>(builder: (context, themeNotifier, child) {
-      Color appBarColor = themeNotifier.isDark ? Colors.black : Colors.blue;
-
       return Scaffold(
         appBar: AppBar(
-          automaticallyImplyLeading: false,
-          centerTitle: true,
-          title: const Text(
-            'SUPER PRZEPISY',
-            style: TextStyle(fontSize: 20),
+          title: Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(right: 8.0),
+                child: Image.asset(
+                  'images/logo.png',
+                  width: 110,
+                  height: 110,
+                ),
+              ),
+              Text('Super Przepisy'),
+            ],
           ),
-          actions: [
-            // Dodaj swoje widżety akcji tutaj
-          ],
-          backgroundColor: appBarColor,
+          automaticallyImplyLeading: false, // Remove the back arrow
         ),
-        body: Column(
-          children: [
-            const Align(
-              alignment: Alignment.center,
-              child: Image(
-                image: AssetImage('images/logo.png'),
+        body: Container(
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage('assets/background.jpg'),
+              fit: BoxFit.cover,
+            ),
+          ),
+          child: Column(
+            children: [
+              SizedBox(height: 10),
+              Container(
+                width: 100,
                 height: 100,
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage('assets/obraz.png'),
+                    fit: BoxFit.cover,
+                  ),
+                  shape: BoxShape.circle,
+                ),
               ),
-            ),
-            const Text(
-              'Gotuj zdrowo i smacznie!',
-              style: TextStyle(fontSize: 25),
-            ),
-            const SizedBox(
-              height: 90,
-            ),
-            const Align(
-              child: Image(
-                image: AssetImage('images/fotofood.png'),
+              SizedBox(height: 50),
+              Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        InkWell(
+                          onTap: () {
+                            Navigator.pushNamed(context, '/ekran2');
+                          },
+                          child: Container(
+                            width: 150,
+                            height: 150,
+                            margin: EdgeInsets.all(10),
+                            decoration: BoxDecoration(
+                              color: Colors.blue,
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  'Sałatka z Mozzarellą',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                SizedBox(height: 10),
+                                Image.asset(
+                                  'images/obraz.png',
+                                  fit: BoxFit.cover,
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        InkWell(
+                          onTap: () {
+                            Navigator.pushNamed(context, '/ekran4');
+                          },
+                          child: Container(
+                            width: 150,
+                            height: 150,
+                            margin: EdgeInsets.all(10),
+                            decoration: BoxDecoration(
+                              color: Colors.blue,
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  'Spaghetti',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                SizedBox(height: 10),
+                                Image.asset(
+                                  'images/spaghetti.png',
+                                  fit: BoxFit.cover,
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: 30),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        InkWell(
+                          onTap: () {
+                            Navigator.pushNamed(context, '/ekran3');
+                          },
+                          child: Container(
+                            width: 150,
+                            height: 150,
+                            margin: EdgeInsets.all(10),
+                            decoration: BoxDecoration(
+                              color: Colors.blue,
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  'Klopsiki',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                SizedBox(height: 10),
+                                Transform.scale(
+                                  scale: 1.0, // Adjust the scale as needed
+                                  child: Image.asset(
+                                    'images/klopsy.png',
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
               ),
-            ),
-          ],
+              SizedBox(height: 50), // Add this SizedBox for spacing
+              Text(
+                'Więcej przepisów wkrótce!...',
+                style: TextStyle(
+                  color: Colors.grey,
+                  fontSize: 12,
+                ),
+              ),
+            ],
+          ),
         ),
         bottomNavigationBar: BottomNavigationBar(
           items: const <BottomNavigationBarItem>[
@@ -123,7 +214,7 @@ class _Ekran1State extends State<Ekran1> with SingleTickerProviderStateMixin {
                 break;
             }
           },
-          backgroundColor: appBarColor,
+          backgroundColor: themeNotifier.isDark ? Colors.black : Colors.blue,
           selectedItemColor: Colors.white,
           unselectedItemColor: Colors.grey,
           iconSize: 34,
