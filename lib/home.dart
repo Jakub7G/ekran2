@@ -191,6 +191,30 @@ class Ekran1 extends StatelessWidget {
           unselectedItemColor: Colors.grey,
           iconSize: 34,
         ),
+        floatingActionButton: Container(
+          margin: EdgeInsets.only(bottom: 410), // Przesuń w górę o 10 pikseli
+          decoration: BoxDecoration(
+            color: Colors.orange,
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(15),
+              bottomLeft: Radius.circular(15),
+            ),
+          ),
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(
+              'Polecamy!',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 30,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+        ),
+
+
+        floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
       );
     });
   }
