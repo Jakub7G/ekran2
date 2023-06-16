@@ -79,7 +79,7 @@ class Ekran1 extends StatelessWidget {
                   height: 150,
                   margin: EdgeInsets.all(10),
                   decoration: BoxDecoration(
-                    color: Colors.orangeAccent,
+                    color: Colors.green[200],
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child: Column(
@@ -192,12 +192,14 @@ class Ekran1 extends StatelessWidget {
           iconSize: 34,
         ),
         floatingActionButton: Container(
-          margin: EdgeInsets.only(bottom: 410), // Przesuń w górę o 10 pikseli
+          margin: EdgeInsets.only(bottom: 690,right: 125), // Przesuń w górę o 10 pikseli
           decoration: BoxDecoration(
-            color: Colors.orange,
+            color: Colors.orange[200],
             borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(15),
-              bottomLeft: Radius.circular(15),
+              topLeft: Radius.circular(20),
+              bottomLeft: Radius.circular(20),
+              topRight: Radius.circular(20),
+              bottomRight: Radius.circular(20)
             ),
           ),
           child: Padding(
@@ -206,14 +208,12 @@ class Ekran1 extends StatelessWidget {
               'Polecamy!',
               style: TextStyle(
                 color: Colors.white,
-                fontSize: 30,
+                fontSize: 21,
                 fontWeight: FontWeight.bold,
               ),
             ),
           ),
         ),
-
-
         floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
       );
     });

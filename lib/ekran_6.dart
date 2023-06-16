@@ -14,18 +14,9 @@ class Ekran6 extends StatelessWidget {
           centerTitle: true,
           title: Text('KATALOG'),
           automaticallyImplyLeading: false, // Dodana właściwość
-          actions: [
-            IconButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => RecipeScreen()),
-                );
-              },
-              icon: Icon(Icons.article),
-            ),
-          ],
-          backgroundColor: themeNotifier.isDark ? Colors.black : Colors.orange[100], // Ustawienie koloru tła paska nawigacji
+          backgroundColor: themeNotifier.isDark
+              ? Colors.black
+              : Colors.orange[100], // Ustawienie koloru tła paska nawigacji
         ),
         body: SingleChildScrollView(
           child: Padding(
@@ -73,7 +64,39 @@ class Ekran6 extends StatelessWidget {
                   ),
                 ),
                 SizedBox(height: 16),
-                CatalogTable(),
+                SizedBox(height: 16),
+                Text(
+                  'Przepis:',
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                SizedBox(height: 8),
+                Text(
+                  '1. Wołowinę razem z łojem zmielić na grubych oczkach maszyny do mielenia mięsa.',
+                  style: TextStyle(fontSize: 16),
+                ),
+                SizedBox(height: 8),
+                Text(
+                  '2. Mięso razem z Przyprawą do grilla Knorr wyrób ręką i uformuj okrągłe hamburgery o masie około 120 g. Hamburgery powinny mieć średnicę co najmniej 10 cm i być grube na około 2 cm.',
+                  style: TextStyle(fontSize: 16),
+                ),
+                SizedBox(height: 8),
+                Text(
+                  '3. Burgery wrzuć bezpośrednio na dobrze rozgrzany ruszt grillowy. Grilluj około 15 minut, w zależności od stopnia wysmażenia. ',
+                  style: TextStyle(fontSize: 16),
+                ),
+                SizedBox(height: 8),
+                Text(
+                  '4. W międzyczasie przygotuj bułki: przekrój je na pół, opiecz na grillu i posmaruj z obu stron sosem Hellmanns. Na górną część bułki ułóż liść sałaty lodowej, plaster cebuli i gruby plaster pomidora. ',
+                  style: TextStyle(fontSize: 16),
+                ),
+                SizedBox(height: 8),
+                Text(
+                  '5. Na dolną część bułki połóż zgrillowanego burgera z serem i przykryj go dwoma plastrami chrupiącego boczku. Kanapkę przykryj górną częścią bułki z sałatą, cebulą i pomidorem. Żeby kanapka się nie rozpadła, przekłuj ją wykałaczką z korniszonem i oliwką. ',
+                  style: TextStyle(fontSize: 16),
+                ),
               ],
             ),
           ),
@@ -116,156 +139,13 @@ class Ekran6 extends StatelessWidget {
                 break;
             }
           },
-          backgroundColor: themeNotifier.isDark ? Colors.black : Colors.orange[100],
+          backgroundColor:
+          themeNotifier.isDark ? Colors.black : Colors.orange[100],
           selectedItemColor: Colors.white,
           unselectedItemColor: Colors.grey,
           iconSize: 34,
         ),
       );
     });
-  }
-}
-class CatalogTable extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        border: Border.all(
-          color: Colors.black,
-          width: 2,
-        ),
-        color: Colors.lightBlue[100],
-      ),
-      padding: EdgeInsets.all(10),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          _buildTableRow('Mięso mielone wołowe', '1x sztuka (100g)'),
-          _buildTableRow('Bułka do burgera', '1x (80g)'),
-          _buildTableRow('Plaster żółtego sera', '1x sztuka (15g)'),
-          _buildTableRow('Pomidor', '1x sztuka (80g)'),
-          _buildTableRow('Cebula', '2x sztuka (120g)'),
-          _buildTableRow('Ogórek', '1 x sztuka (100g)'),
-          _buildTableRow('sól', '1 x szczypta (1g)'),
-          _buildTableRow('musztarda', '2 łyżka (30g)'),
-        ],
-      ),
-    );
-  }
-  Widget _buildTableRow(String name, String description) {
-    return Container(
-      margin: EdgeInsets.only(bottom: 8),
-      child: Row(
-        children: [
-          Expanded(
-            child: Text(
-              name,
-              style: TextStyle(
-                color: Colors.black,
-                fontSize: 16,
-              ),
-            ),
-          ),
-          Text(
-            description,
-            style: TextStyle(
-              color: Colors.black,
-              fontSize: 16,
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-class RecipeScreen extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        title: Text('SUPER PRZEPISY'),
-      ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(21),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'Oto przepis na sałatkę z awokado i mozarellą:',
-                style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                ),
-                textAlign: TextAlign.center,
-              ),
-              SizedBox(height: 16),
-              Align(
-                alignment: Alignment.centerLeft,
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16),
-                  child: Text(
-                    '1. Pokrój pomidora, awokado i ser mozzarella na plastry.',
-                    style: TextStyle(fontSize: 16),
-                    textAlign: TextAlign.left,
-                  ),
-                ),
-              ),
-              SizedBox(height: 8),
-              Align(
-                alignment: Alignment.centerLeft,
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16),
-                  child: Text(
-                    '2. Na talerzu ułóż rukolę i układaj na niej plasterki pomidora, awokado i mozzarelli.',
-                    style: TextStyle(fontSize: 16),
-                    textAlign: TextAlign.left,
-                  ),
-                ),
-              ),
-              SizedBox(height: 8),
-              Align(
-                alignment: Alignment.centerLeft,
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16),
-                  child: Text(
-                    '3. Skrop wszystko oliwą z oliwek.',
-                    style: TextStyle(fontSize: 16),
-                    textAlign: TextAlign.left,
-                  ),
-                ),
-              ),
-              SizedBox(height: 8),
-              Align(
-                alignment: Alignment.centerLeft,
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16),
-                  child: Text(
-                    '4. Dopraw solą, pieprzem i oregano.',
-                    style: TextStyle(fontSize: 16),
-                    textAlign: TextAlign.left,
-                  ),
-                ),
-              ),
-              SizedBox(height: 16),
-              Center(
-                child: Image.asset('images/salatka.png'),
-              ),
-              SizedBox(height: 16),
-              Align(
-                alignment: Alignment.center,
-                child: ElevatedButton(
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  child: Text('Powrót'),
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
   }
 }

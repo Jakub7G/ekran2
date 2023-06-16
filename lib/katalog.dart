@@ -11,8 +11,10 @@ class Katalog extends StatelessWidget {
     return Consumer<ModelTheme>(builder: (context, themeNotifier, child) {
       return Scaffold(
         appBar: AppBar(
-          backgroundColor: themeNotifier.isDark ? Colors.black : Colors.orange[100],
+          backgroundColor:
+          themeNotifier.isDark ? Colors.black : Colors.orange[100],
           title: Text('Nasz Katalog!'),
+          automaticallyImplyLeading: false,
         ),
         body: GridView.count(
           crossAxisCount: 2,
@@ -233,7 +235,8 @@ class Katalog extends StatelessWidget {
                 break;
             }
           },
-          backgroundColor: themeNotifier.isDark ? Colors.black : Colors.orange[100],
+          backgroundColor:
+          themeNotifier.isDark ? Colors.black : Colors.orange[100],
           selectedItemColor: Colors.white,
           unselectedItemColor: Colors.grey,
           iconSize: 34,

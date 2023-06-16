@@ -1,3 +1,4 @@
+import 'package:app/katalog.dart';
 import 'package:flutter/material.dart';
 import 'package:app/SettingsApp.dart';
 import 'package:app/home.dart';
@@ -10,7 +11,6 @@ class Ekran3 extends StatelessWidget {
     return Consumer<ModelTheme>(builder: (context, themeNotifier, child) {
       return Scaffold(
         appBar: AppBar(
-
           centerTitle: true,
           title: Text('KATALOG PRZEPISÓW'),
           automaticallyImplyLeading: false, // Dodana właściwość
@@ -66,20 +66,37 @@ class Ekran3 extends StatelessWidget {
                 SizedBox(height: 16),
                 CatalogTable(),
                 SizedBox(height: 16),
-                Align(
-                  alignment: Alignment.center,
-                  child: ElevatedButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => RecipeScreen()),
-                      );
-                    },
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.lightBlue, // Ustawienie koloru przycisku
-                    ),
-                    child: Text('Zobacz przepis'),
+                Text(
+                  'Przepis:',
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
                   ),
+                ),
+                SizedBox(height: 16),
+                Text(
+                  '1. W misce wymieszaj mięso mielone, bułkę tartą, posiekaną cebulę, jajko, mleko, przeciśnięty czosnek, sól i pieprz.',
+                  style: TextStyle(fontSize: 16),
+                ),
+                SizedBox(height: 8),
+                Text(
+                  '2. Uformuj z masy mięsnej małe klopsy.',
+                  style: TextStyle(fontSize: 16),
+                ),
+                SizedBox(height: 8),
+                Text(
+                  '3. Na rozgrzanej patelni obsmaż klopsy z każdej strony.',
+                  style: TextStyle(fontSize: 16),
+                ),
+                SizedBox(height: 8),
+                Text(
+                  '4. W osobnym garnku podgrzej przecier pomidorowy z cukrem i wodą.',
+                  style: TextStyle(fontSize: 16),
+                ),
+                SizedBox(height: 8),
+                Text(
+                  '5. Dodaj przyprawę do mięsa do sosu i gotuj przez kilka minut.',
+                  style: TextStyle(fontSize: 16),
                 ),
               ],
             ),
@@ -112,7 +129,7 @@ class Ekran3 extends StatelessWidget {
               case 1:
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => Ekran3()),
+                  MaterialPageRoute(builder: (context) => Katalog()),
                 );
                 break;
               case 2:
@@ -123,7 +140,8 @@ class Ekran3 extends StatelessWidget {
                 break;
             }
           },
-          backgroundColor: themeNotifier.isDark ? Colors.black : Colors.orange[100],
+          backgroundColor:
+          themeNotifier.isDark ? Colors.black : Colors.orange[100],
           selectedItemColor: Colors.white,
           unselectedItemColor: Colors.grey,
           iconSize: 34,
@@ -188,110 +206,6 @@ class CatalogTable extends StatelessWidget {
             ),
           ),
         ],
-      ),
-    );
-  }
-}
-
-class RecipeScreen extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        title: Text('SUPER PRZEPISY'),
-      ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(21),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'Oto przepis na klopsiki:',
-                style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                ),
-                textAlign: TextAlign.center,
-              ),
-              SizedBox(height: 16),
-              Align(
-                alignment: Alignment.centerLeft,
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16),
-                  child: Text(
-                    '1. W misce wymieszaj mięso mielone, bułkę tartą, posiekaną cebulę, jajko, mleko, przeciśnięty czosnek, sól i pieprz.',
-                    style: TextStyle(fontSize: 16),
-                    textAlign: TextAlign.left,
-                  ),
-                ),
-              ),
-              SizedBox(height: 8),
-              Align(
-                alignment: Alignment.centerLeft,
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16),
-                  child: Text(
-                    '2. Uformuj z masy mięsnej małe klopsy.',
-                    style: TextStyle(fontSize: 16),
-                    textAlign: TextAlign.left,
-                  ),
-                ),
-              ),
-              SizedBox(height: 8),
-              Align(
-                alignment: Alignment.centerLeft,
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16),
-                  child: Text(
-                    '3. Na rozgrzanej patelni obsmaż klopsy z każdej strony.',
-                    style: TextStyle(fontSize: 16),
-                    textAlign: TextAlign.left,
-                  ),
-                ),
-              ),
-              SizedBox(height: 8),
-              Align(
-                alignment: Alignment.centerLeft,
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16),
-                  child: Text(
-                    '4. W osobnym garnku podgrzej przecier pomidorowy z cukrem i wodą.',
-                    style: TextStyle(fontSize: 16),
-                    textAlign: TextAlign.left,
-                  ),
-                ),
-              ),
-              SizedBox(height: 8),
-              Align(
-                alignment: Alignment.centerLeft,
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16),
-                  child: Text(
-                    '5. Dodaj przyprawę do mięsa do sosu i gotuj przez kilka minut.',
-                    style: TextStyle(fontSize: 16),
-                    textAlign: TextAlign.left,
-                  ),
-                ),
-              ),
-              SizedBox(height: 16),
-              Center(
-                child: Image.asset('images/klopsy2.png'),
-              ),
-              SizedBox(height: 16),
-              Align(
-                alignment: Alignment.center,
-                child: ElevatedButton(
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  child: Text('Powrót'),
-                ),
-              ),
-            ],
-          ),
-        ),
       ),
     );
   }

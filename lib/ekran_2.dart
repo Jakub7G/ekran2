@@ -1,3 +1,4 @@
+import 'package:app/katalog.dart';
 import 'package:flutter/material.dart';
 import 'package:app/SettingsApp.dart';
 import 'package:app/home.dart';
@@ -14,9 +15,8 @@ class Ekran2 extends StatelessWidget {
             centerTitle: true,
             title: Text('KATALOG PRZEPISÓW'),
             automaticallyImplyLeading: false,
-            backgroundColor: themeNotifier.isDark
-                ? Colors.black
-                : Colors.orange[100],
+            backgroundColor:
+            themeNotifier.isDark ? Colors.black : Colors.orange[100],
           ),
           body: SingleChildScrollView(
             child: Padding(
@@ -25,17 +25,7 @@ class Ekran2 extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SizedBox(height: 0.5),
-                  Center(
-                    child: Text(
-                      '',
-                      style: TextStyle(
-                        fontSize: 2,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                  SizedBox(height: 10),
-                  Image.asset('images/obraz.png'),
+                  Image.asset('images/obraz.png', width: double.infinity),
                   SizedBox(height: 16),
                   Center(
                     child: Text(
@@ -66,19 +56,32 @@ class Ekran2 extends StatelessWidget {
                   SizedBox(height: 16),
                   CatalogTable(),
                   SizedBox(height: 16),
-                  Align(
-                    alignment: Alignment.center,
-                    child: ElevatedButton(
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => RecipeScreen(),
-                          ),
-                        );
-                      },
-                      child: Text('Zobacz przepis'),
+                  Text(
+                    'Przepis:',
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
                     ),
+                  ),
+                  SizedBox(height: 16),
+                  Text(
+                    '1. Pokrój pomidora, awokado i ser mozzarella na plastry.',
+                    style: TextStyle(fontSize: 16),
+                  ),
+                  SizedBox(height: 8),
+                  Text(
+                    '2. Na talerzu ułóż rukolę i układaj na niej plasterki pomidora, awokado i mozzarelli.',
+                    style: TextStyle(fontSize: 16),
+                  ),
+                  SizedBox(height: 8),
+                  Text(
+                    '3. Skrop wszystko oliwą z oliwek.',
+                    style: TextStyle(fontSize: 16),
+                  ),
+                  SizedBox(height: 8),
+                  Text(
+                    '4. Dopraw solą, pieprzem i oregano.',
+                    style: TextStyle(fontSize: 16),
                   ),
                 ],
               ),
@@ -111,7 +114,7 @@ class Ekran2 extends StatelessWidget {
                 case 1:
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => Ekran2()),
+                    MaterialPageRoute(builder: (context) => Katalog()),
                   );
                   break;
                 case 2:
@@ -184,98 +187,6 @@ class CatalogTable extends StatelessWidget {
             ),
           ),
         ],
-      ),
-    );
-  }
-}
-
-class RecipeScreen extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        title: Text('SUPER PRZEPISY'),
-      ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(21),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'Oto przepis na sałatkę z awokado i mozarellą:',
-                style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                ),
-                textAlign: TextAlign.center,
-              ),
-              SizedBox(height: 16),
-              Align(
-                alignment: Alignment.centerLeft,
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16),
-                  child: Text(
-                    '1. Pokrój pomidora, awokado i ser mozzarella na plastry.',
-                    style: TextStyle(fontSize: 16),
-                    textAlign: TextAlign.left,
-                  ),
-                ),
-              ),
-              SizedBox(height: 8),
-              Align(
-                alignment: Alignment.centerLeft,
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16),
-                  child: Text(
-                    '2. Na talerzu ułóż rukolę i układaj na niej plasterki pomidora, awokado i mozzarelli.',
-                    style: TextStyle(fontSize: 16),
-                    textAlign: TextAlign.left,
-                  ),
-                ),
-              ),
-              SizedBox(height: 8),
-              Align(
-                alignment: Alignment.centerLeft,
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16),
-                  child: Text(
-                    '3. Skrop wszystko oliwą z oliwek.',
-                    style: TextStyle(fontSize: 16),
-                    textAlign: TextAlign.left,
-                  ),
-                ),
-              ),
-              SizedBox(height: 8),
-              Align(
-                alignment: Alignment.centerLeft,
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16),
-                  child: Text(
-                    '4. Dopraw solą, pieprzem i oregano.',
-                    style: TextStyle(fontSize: 16),
-                    textAlign: TextAlign.left,
-                  ),
-                ),
-              ),
-              SizedBox(height: 16),
-              Center(
-                child: Image.asset('images/salatka.png'),
-              ),
-              SizedBox(height: 16),
-              Align(
-                alignment: Alignment.center,
-                child: ElevatedButton(
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  child: Text('Powrót'),
-                ),
-              ),
-            ],
-          ),
-        ),
       ),
     );
   }

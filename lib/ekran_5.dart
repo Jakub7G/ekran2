@@ -5,7 +5,6 @@ import 'package:app/home.dart';
 import 'package:provider/provider.dart';
 import 'model_theme.dart';
 
-
 class Ekran5 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -15,18 +14,9 @@ class Ekran5 extends StatelessWidget {
           centerTitle: true,
           title: Text('KATALOG'),
           automaticallyImplyLeading: false, // Dodana właściwość
-          actions: [
-            IconButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => RecipeScreen()),
-                );
-              },
-              icon: Icon(Icons.article),
-            ),
-          ],
-          backgroundColor: themeNotifier.isDark ? Colors.black : Colors.orange[100], // Ustawienie koloru tła paska nawigacji
+          backgroundColor: themeNotifier.isDark
+              ? Colors.black
+              : Colors.orange[100], // Ustawienie koloru tła paska nawigacji
         ),
         body: SingleChildScrollView(
           child: Padding(
@@ -45,7 +35,7 @@ class Ekran5 extends StatelessWidget {
                   ),
                 ),
                 SizedBox(height: 10),
-                Image.asset('images/warzywa.png'),
+                Image.asset('images/warzywa.png', width: double.infinity),
                 SizedBox(height: 16),
                 Center(
                   child: Text(
@@ -75,6 +65,34 @@ class Ekran5 extends StatelessWidget {
                 ),
                 SizedBox(height: 16),
                 CatalogTable(),
+                SizedBox(height: 16),
+                Text(
+                  'Przepis krok po kroku:',
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                SizedBox(height: 8),
+                Text(
+                  '1. Warzywa gotuj przez 1 minutę. Po gotowaniu odcedź i zachowaj 3-5 łyżek wody z gotowania. ',
+                  style: TextStyle(fontSize: 16),
+                ),
+                SizedBox(height: 8),
+                Text(
+                  '2. Na patelni rozpuść tłuszcz i podsmaż warzywa. ',
+                  style: TextStyle(fontSize: 16),
+                ),
+                SizedBox(height: 8),
+                Text(
+                  '3. SDodaj wodę z gotowania oraz zawartość opakowania sosu Knorr. ',
+                  style: TextStyle(fontSize: 16),
+                ),
+                SizedBox(height: 8),
+                Text(
+                  '4. Wszystko dokładnie wymieszaj, dopraw ziołami prowansalskimi i smaż przez ok. 2 minuty. Podawaj natychmiast po przygotowaniu. Tak przygotowane warzywa doskonale smakują samodzielnie lub z ryżem. ',
+                  style: TextStyle(fontSize: 16),
+                ),
               ],
             ),
           ),
@@ -117,7 +135,8 @@ class Ekran5 extends StatelessWidget {
                 break;
             }
           },
-          backgroundColor: themeNotifier.isDark ? Colors.black : Colors.orange[100],
+          backgroundColor:
+          themeNotifier.isDark ? Colors.black : Colors.orange[100],
           selectedItemColor: Colors.white,
           unselectedItemColor: Colors.grey,
           iconSize: 34,
@@ -126,6 +145,7 @@ class Ekran5 extends StatelessWidget {
     });
   }
 }
+
 class CatalogTable extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -153,6 +173,7 @@ class CatalogTable extends StatelessWidget {
       ),
     );
   }
+
   Widget _buildTableRow(String name, String description) {
     return Container(
       margin: EdgeInsets.only(bottom: 8),
@@ -175,97 +196,6 @@ class CatalogTable extends StatelessWidget {
             ),
           ),
         ],
-      ),
-    );
-  }
-}
-class RecipeScreen extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        title: Text('SUPER PRZEPISY'),
-      ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(21),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'Oto przepis na sałatkę z awokado i mozarellą:',
-                style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                ),
-                textAlign: TextAlign.center,
-              ),
-              SizedBox(height: 16),
-              Align(
-                alignment: Alignment.centerLeft,
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16),
-                  child: Text(
-                    '1. Pokrój pomidora, awokado i ser mozzarella na plastry.',
-                    style: TextStyle(fontSize: 16),
-                    textAlign: TextAlign.left,
-                  ),
-                ),
-              ),
-              SizedBox(height: 8),
-              Align(
-                alignment: Alignment.centerLeft,
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16),
-                  child: Text(
-                    '2. Na talerzu ułóż rukolę i układaj na niej plasterki pomidora, awokado i mozzarelli.',
-                    style: TextStyle(fontSize: 16),
-                    textAlign: TextAlign.left,
-                  ),
-                ),
-              ),
-              SizedBox(height: 8),
-              Align(
-                alignment: Alignment.centerLeft,
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16),
-                  child: Text(
-                    '3. Skrop wszystko oliwą z oliwek.',
-                    style: TextStyle(fontSize: 16),
-                    textAlign: TextAlign.left,
-                  ),
-                ),
-              ),
-              SizedBox(height: 8),
-              Align(
-                alignment: Alignment.centerLeft,
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16),
-                  child: Text(
-                    '4. Dopraw solą, pieprzem i oregano.',
-                    style: TextStyle(fontSize: 16),
-                    textAlign: TextAlign.left,
-                  ),
-                ),
-              ),
-              SizedBox(height: 16),
-              Center(
-                child: Image.asset('images/salatka.png'),
-              ),
-              SizedBox(height: 16),
-              Align(
-                alignment: Alignment.center,
-                child: ElevatedButton(
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  child: Text('Powrót'),
-                ),
-              ),
-            ],
-          ),
-        ),
       ),
     );
   }
